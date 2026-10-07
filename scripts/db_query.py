@@ -8,7 +8,8 @@ database_url = os.getenv("DATABASE_URL")
 
 with psycopg.connect(database_url) as connection:
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users;")
+        cursor.execute("SELECT id, username FROM users;")
         users = cursor.fetchall()
 
-        print(users)
+        for user in users:
+            print(user)
