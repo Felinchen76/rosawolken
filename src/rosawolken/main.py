@@ -6,9 +6,15 @@ app = FastAPI()
 def root():
     return {"message": "hello from rosawolken:)"}
 
-@app.get("/images")
-def get_images():
-    return [
-    {"id": "1", "filename": "urlaub.jpg"},
-    {"id": "2", "filename": "katze.jpg"},
-]
+@app.get("/users")
+def get_users():
+    from rosawolken.database import get_connection
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT id, username FROM users;")
+        users = cursor.fetchall()
+
+    connection.close
+    return users
+
+
