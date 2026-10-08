@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends
 from rosawolken.database import get_connection
+from psycopg import Connection
 
 app = FastAPI()
 
