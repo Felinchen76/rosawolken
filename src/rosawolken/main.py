@@ -18,14 +18,15 @@ def get_users(connection: Connection = Depends(get_connection)):
     return users
 
 @app.get("/images")
-def get_images(onnection: Connection = Depends(get_connection)):
+def get_images(connection: Connection = Depends(get_connection)):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, filename FROM images;")
         images = cursor.fetchall()
     return images
 
 @app.get("/folders")
-def get_folders(onnection: Connection = Depends(get_connection)):
+def get_folders(connection: Connection = Depends(get_connection)):
     with connection.cursor as cursor:
-        cursor.execute("SELECT id, name FROM folders")
+        cursor.execute("SELECT id, name FROM folders;")
+        folders = cursor.fetchall()
     return folders
