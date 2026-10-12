@@ -221,3 +221,6 @@ __marimo__/
 
 # Environment / secrets
 .env
+
+# Pycharm IDE
+.idea/
